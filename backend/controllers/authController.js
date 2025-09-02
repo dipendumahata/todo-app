@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { user } = require('../models/userModel');
 
-const SECRET = 'my_super_secret_junior_project'; // keep this secret in env in real app
+const SECRET = 'my_super_secret_junior_project'; 
 
 exports.login = (req, res) => {
   const { username, password } = req.body;
