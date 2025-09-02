@@ -16,12 +16,16 @@ exports.addTask = (req, res) => {
 
 exports.updateTask = (req, res) => {
   const id = req.params.id;
-  const { completed } = req.body;
-  if (typeof completed !== 'boolean') {
-    return res.status(400).json({ error: 'completed boolean required' });
+  const { completed, title } = req.body;
+
+  // At least one field required
+  if (typeof completed !== 'boolean' && (typeof title !== 'string' || title.trim() === '')) {
+    return res.status(400).json({ error: 'completed or title required' });
   }
-  const updated = taskModel.updateStatus(id, completed);
+
+  const updated = taskModel.update(id, { completed, title });
   if (!updated) return res.status(404).json({ error: 'task not found' });
+
   res.json(updated);
 };
 
