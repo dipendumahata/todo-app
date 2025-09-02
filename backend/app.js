@@ -1,4 +1,3 @@
-// Simple Express backend (MVC-ish) - junior dev style
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -16,7 +15,7 @@ app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
 app.use('/profile', profileRoutes);
 
-// simple ping
+
 app.get('/', (req, res) => {
   res.json({ message: 'Backend running' });
 });
